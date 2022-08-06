@@ -1,0 +1,77 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#testName{
+	width: 96%;
+	padding: 2%;
+	background-color: darkgreen;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+.subjectBtn{
+	background-color: red;
+	color: white;
+	padding: 10px;
+	width: 20%;
+}
+#box{
+	display: flex;
+	flex-direction: row;
+	width: 98%;
+	padding: 1%;
+}
+#left{
+	width: 70%;
+	padding: 1%;
+	border: 1px solid black;
+}
+#questionBox{
+	font-size: 18px;
+	height: 200px;
+	border: 1px solid black;
+	width: 98%;
+	padding: 1%;
+	background-color: powderblue;
+}
+.inside{
+	display: inline;
+}
+.boxr{
+	display: inline-block;
+	vertical-align: middle;
+	width: auto;
+}
+.denr{
+	border-top: 1px solid black;
+}
+.editbtn{
+	padding: 5px;
+	width: 28%;
+	background: blue;
+	color: white;
+}
+#entry{
+	display: inline;
+	width: 28%;
+}
+#savebtn{
+	display: inline;
+}
+#para{
+	width: 100%;
+	padding: 5px;
+	font-size: 18px;
+}
+.fr{
+	padding: 5px;
+	font-size: 16px;
+}
+.op{
+	font-size: 18px;
+	width: 80%;
+	padding: 5px;
+	height: 50px;
+	border: 1px solid black;
+}
