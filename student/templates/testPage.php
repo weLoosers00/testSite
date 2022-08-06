@@ -3,6 +3,7 @@ session_start();
 include "../../others/include/conn.php";
 $test_id = $_SESSION["id"] ;
 // $test_id = "9569505582aac562022.07.0412.47.27am";
+//have fun
 $number_of_subjects;
 $name_of_subjects;
 $per_subject_question;
