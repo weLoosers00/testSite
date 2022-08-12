@@ -1,8 +1,8 @@
 <?php
 session_start();
 include "../../others/include/conn.php";
-$test_id = $_SESSION["id"] ;
-// $test_id = "9569505582aac562022.07.0412.47.27am";
+//$test_id = $_SESSION["id"] ;
+ $test_id = "9569505582aac562022.07.0412.47.27am";
 //have fun
 $number_of_subjects;
 $name_of_subjects;
@@ -52,10 +52,14 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
 <body>
     <div id="screen">
         <div id="head">
-                    <div id="timer"></div>
+            
+                    <div id="timer">
+                        <div id="m-course">JEE Test #345A</div><br>
+                        <div id="time"></div>
+                    </div>
             <div id="course">JEE Test #345A<br>by teacher name</div>
             <div id="profile">Student name<br>
-                <button id="sbmt" class="final" onclick="ask()">final submit</button>
+                <button id="sbmt" class="final" onclick="ask()">Submit</button>
             </div>
         </div>
         <div id="box">
@@ -65,16 +69,16 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
                     <p id="q"></p>
                 </div>
                 <div id="options">
-                    <div class="op">
+                    <div class="op" id="op1" onclick="selectBox(this)">
                     (a)<input class = "opt" type="radio" name="q0" id="b1"><span class="oo" id="o1"></span>
                 </div>
-                    <div class="op">
+                    <div class="op" id="op2"  onclick="selectBox(this)">
                     (b)<input class = "opt" type="radio" name="q0" id="b2"><span class="oo" id="o2"></span>
                 </div>
-                    <div class="op">
+                    <div class="op" id="op3"  onclick="selectBox(this)">
                     (c)<input class = "opt" type="radio" name="q0" id="b3"><span class="oo" id="o3"></span>
                 </div>
-                    <div class="op">
+                    <div class="op" id="op4"  onclick="selectBox(this)">
                     (d)<input class = "opt" type="radio" name="q0" id="b4"><span class="oo" id="o4"></span>
                 </div>
                 </div>
@@ -102,6 +106,17 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             <button class="btn" id = "nbtn" onclick="next()">next</button>
     
         </div>
+        <div id="m-buttons">
+            <button class="m-btn" id="m-pqbtn" onclick="previous()"><i class="fa fa-angle-left"></i></button>
+            <button class="m-btn" id="m-rlbtn" onclick="review()">review</button>
+            <button class="m-btn" id="m-clbtn" onclick="clears()">clear</button>
+            <button class="m-btn" id="m-snbtn" onclick="SaveNext()">save & next</button>
+            <button class="m-btn" id = "m-nbtn" onclick="next()">
+                <i class="fa fa-angle-right"></i>
+            </button>
+    
+        </div>
+        <button id="m-status" onclick="showStatus()"><i class="fa fa-bolt"></i></button>
     </div>
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -290,6 +305,7 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             if (answers[qs] != 0) {
                 document.getElementById("b" + answers[qs]).checked = true;
             }
+            backgroundChange();
         }
 
         function previous() {
@@ -330,6 +346,7 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             if (answers[qs] != 0) {
                 document.getElementById("b" + answers[qs]).checked = true;
             }
+            backgroundChange();
             if (status[qs] == 0) {
                 status[qs] = 1;
                 color();
@@ -345,6 +362,7 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             document.getElementById("b2").checked = false;
             document.getElementById("b3").checked = false;
             document.getElementById("b4").checked = false;
+            backgroundChange();
         }
 
         function next() {
@@ -372,6 +390,7 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             if (answers[qs] != 0) {
                 document.getElementById("b" + answers[qs]).checked = true;
             }
+            backgroundChange();
             if (status[qs] == 0) {
                 status[qs] = 1;
                 color();
@@ -395,6 +414,7 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             answers[qs] = selected;
             status[qs] = 3;
             color();
+            backgroundChange();
         }
     </script>
 
@@ -416,11 +436,11 @@ for ($i = 0; $i < strlen($per_subject_question); $i++) {
             if (s < 10) {
                 s = "0" + s;
             }
-            document.getElementById('timer').innerHTML = h + ":" + m + ":" + s;
+            document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
             count--;
             if (count === 0) {
                 clearInterval(interval);
-                document.getElementById('timer').innerHTML = 'Done';
+                document.getElementById('time').innerHTML = 'Done';
                 submit_exam();
                 document.getElementById('screen').innerHTML = "time is out";
             }
@@ -520,6 +540,78 @@ window.onclick = function(event) {
             bbb.checked=false;
             flag=0;
         }
+    }
+    var ms =0;
+    function showStatus(){
+        var btn = document.getElementById('m-status');
+        var status_box = document.getElementById('status');
+        if(ms==0){
+            btn.innerHTML = '<i class="fa fa-close"></i>';
+            status_box.style.display="block";
+            ms=1;
+        }else{
+            btn.innerHTML = '<i class="fa fa-bolt"></i>';
+            status_box.style.display="none";
+            ms=0;
+        }
+
+    }
+    function selectBox(box){
+        var bid = box.id;
+        if(bid =="op1"){
+            if(document.getElementById("b1").checked == true){
+                document.getElementById("b1").checked = false;
+            }else{
+                document.getElementById("b1").checked = true;
+            }   
+        }
+        if(bid =="op2"){
+            if(document.getElementById("b2").checked == true){
+                document.getElementById("b2").checked = false;
+            }else{
+                document.getElementById("b2").checked = true;
+            }   
+        }
+        if(bid =="op3"){
+            if(document.getElementById("b3").checked == true){
+                document.getElementById("b3").checked = false;
+            }else{
+                document.getElementById("b3").checked = true;
+            }   
+        }
+        if(bid =="op4"){
+            if(document.getElementById("b4").checked == true){
+                document.getElementById("b4").checked = false;
+            }else{
+                document.getElementById("b4").checked = true;
+            }   
+        }
+        backgroundChange();
+
+
+
+    }
+    function backgroundChange(){
+            if(document.getElementById("b1").checked == true){
+                document.getElementById("op1").style.backgroundColor = "powderblue";
+            }else{
+                 document.getElementById("op1").style.backgroundColor = "white";
+            }
+            if(document.getElementById("b2").checked == true){
+                document.getElementById("op2").style.backgroundColor = "powderblue";
+            }else{
+                 document.getElementById("op2").style.backgroundColor = "white";
+            }
+            if(document.getElementById("b3").checked == true){
+                document.getElementById("op3").style.backgroundColor = "powderblue";
+            }else{
+                 document.getElementById("op3").style.backgroundColor = "white";
+            }
+            if(document.getElementById("b4").checked == true){
+                document.getElementById("op4").style.backgroundColor = "powderblue";
+            }else{
+                 document.getElementById("op4").style.backgroundColor = "white";
+            }
     }
 </script>
 </body>

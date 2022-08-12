@@ -44,6 +44,9 @@
 	display: inline-block;
 	color: whitesmoke;
 }
+#time{
+	color: lawngreen;
+}
 #course{
 	text-align: center;
 	display: inline-block;
@@ -56,13 +59,11 @@
 }
 .final{
 	padding: 5px 20px;
-	background-color: lemonchiffon;
+	background-color: orangered;
 	margin-top: 8px;
 	color: white;
-	border: 3px solid red;
-	color: red;
+	border: none;
 	border-radius: 8px;
-	font-weight: bold;
 
 }
 #box{
@@ -136,6 +137,40 @@
 	background-color: blue;
 }
 #nbtn{
+	background-color: darkgreen;
+}
+#m-buttons{
+	display: none;
+	width: 99%;
+	padding: 4px .5%;
+	position: fixed;
+	bottom: 0;
+	border: 1px solid #dfdfdf;
+	z-index: 10;
+	background-color: ghostwhite;
+	text-align: center;
+	box-shadow: 5px 5px 15px #404040;
+}
+.m-btn{
+	padding: 8px 12px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 14px;
+}
+#m-rlbtn{
+	background-color: purple;
+}
+#m-clbtn{
+	background-color: red;
+}
+#m-pqbtn{
+	background-color: #404040;
+}
+#m-snbtn{
+	background-color: blue;
+}
+#m-nbtn{
 	background-color: darkgreen;
 }
 .m{
@@ -218,4 +253,92 @@
 	float: left;
 	margin-top: 2px;
 	font-size: 18px;
+}
+#m-course{
+	color: white;
+	display: none;
+	text-align: left;
+}
+#m-status{
+	position: fixed;
+	width: 30px;
+	font-size: 18px;
+	height: 30px;
+	bottom: 50px;
+	right: 20px;
+	z-index: 10;
+	opacity: .7;
+	display: none;
+	padding: 5px;
+	border-radius: 50%;
+	border: none;
+	color: darkblue;
+	background-color: #ede;
+}
+@media only screen and (max-width: 600px)
+{
+	#status{
+		position: fixed;
+		bottom: 50px;
+		right: 20px;
+		width: 40%;
+		display: none;
+
+	}
+	#paper{
+		width: 98%;
+		padding: 10px 1%;
+		padding-bottom: 50px;
+	}
+	#q{
+		font-size: 16px;
+		padding:2px;
+	}
+	.op{
+		font-size: 16px;
+	}
+	.btn{
+		font-size: 12px;
+	}
+	#m-course{
+		display: inline-block;
+	}
+	#course{
+		display: none;
+	}
+	#head{
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
+	#sbmt{
+		margin-top: 3px;
+	}
+	#time{
+		margin-top: 5px;
+	}
+	::-webkit-scrollbar {
+  width: 0px;
+}
+#question{
+	padding: 8px;
+	margin: 0px 0px 10px 0px;
+}
+#question b{
+	font-size: 16px;
+}
+#question p{
+	font-size: 14px;
+}
+.op{
+	font-size: 14px;
+}
+#buttons{
+	display: none;
+}
+#m-buttons{
+	display: block;
+}
+#m-status{
+	display: block;
+}
 }
